@@ -1,0 +1,59 @@
+.container {
+    margin-top: 50px;
+}
+.title {
+    font-size: 36px;
+    color: var(--softTextColor);
+    margin-bottom: 30px;
+}
+.write {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.input {
+    padding: 20px;
+    width: 100%;
+}
+.button {
+    padding: 16px 20px;
+    background-color: teal;
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.comments {
+    margin-bottom: 50px;
+}
+.comment {
+    margin-top: 50px;
+}
+.user {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--softTextColor);
+}
+.userName {
+    font-weight: 500;
+}
+.date {
+    font-size: 11px;
+}
+.desc {
+    font-size: 16px;
+    font-weight: 300;
+}

@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+.wrapper {
+    background: var(--softBg);
+    padding: 100px 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    border-radius: 10px;
+}
+.socialButton {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+}
+.socialButton:first-child{
+    background-color: #ff5555;
+}
+.socialButton:nth-child(2){
+    background-color: #111111;
+}
+.socialButton:nth-child(3){
+    background-color: #087bea;
+}
+
+/* media queries */
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        padding: 50px 100px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .wrapper {
+        padding: 30px;
+    }
+    .socialButton {
+        font-weight: 500;
+        font-size: 14px;
+    }
+}

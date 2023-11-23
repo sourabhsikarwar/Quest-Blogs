@@ -1,0 +1,99 @@
+.container {
+    margin-top: 50px;
+}
+.infoContainer {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.textContainer {
+  flex: 1;
+}
+.title {
+    font-size: 48px;
+    margin-bottom: 50px;
+}
+.userImgContainer {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.imgContainer {
+    flex: 1;
+    height: 350px;
+    position: relative;
+}
+.image {
+    object-fit: cover;
+}
+.user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userTextContainer {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    color: var(--softTextColor);
+    font-size: 14px;
+}
+.userName {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.content {
+    display: flex;
+    gap: 50px;
+    margin-top: 30px;
+}
+.post {
+    flex: 5;
+    margin-top: 60px;
+}
+.desc p{
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.desc h1 {
+    margin-bottom: 20px;
+}
+
+/* media queries */
+
+@media screen and (max-width: 1536px) {
+    .title {
+        font-size: 48px;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .title {
+        font-size: 42px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .imgContainer {
+        display: none;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .content {
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .desc {
+        font-size: 16px;
+    }
+    .title {
+        font-size: 28px;
+    }
+}
