@@ -26,6 +26,6 @@ Welcome to Quest Blogs! This is a project for creating and managing blogs using 
 
 To start the development server, run the following command:
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
