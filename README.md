@@ -12,7 +12,7 @@ Welcome to Quest Blogs! This is a project for creating and managing blogs using 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/quest-blogs.git
+   git clone https://github.com/sourabhsikarwar/Quest-Blogs.git
    ```
 
 2. Install the dependencies:
