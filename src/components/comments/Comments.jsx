@@ -1,8 +1,28 @@
+"use client";
 import Image from "next/image";
 import styles from "./comments.module.css";
+import { useSession } from "next-auth/react";
+import useSWR from "swr";
 
-const Comments = () => {
-  const status = "authenticated";
+const fetcher = async (url) => {
+  const res = await fetch(url);
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || "Something went wrong");
+  }
+
+  return data;
+};
+
+const Comments = ({ postSlug }) => {
+  const { status } = useSession();
+  const { data, isLoading } = useSWR(
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    fetcher
+  );
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
@@ -12,71 +32,33 @@ const Comments = () => {
           <button className={styles.button}>Send</button>
         </div>
       ) : (
-        <div></div>
+        <div>Login to write a Comment!</div>
       )}
       <div className={styles.comments}>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src="/p1.jpeg"
-              alt="userImage"
-              className={styles.image}
-              width={50}
-              height={50}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.userName}>Sourabh Sikarwar</span>
-              <span className={styles.date}>01.01.2023</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas nemo
-            alias impedit. Nobis soluta tempora voluptates ab porro
-            exercitationem placeat dicta voluptas eius odio.
-          </p>
-        </div>
-        
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src="/p1.jpeg"
-              alt="userImage"
-              className={styles.image}
-              width={50}
-              height={50}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.userName}>Sourabh Sikarwar</span>
-              <span className={styles.date}>01.01.2023</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas nemo
-            alias impedit. Nobis soluta tempora voluptates ab porro
-            exercitationem placeat dicta voluptas eius odio.
-          </p>
-        </div>
-
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image
-              src="/p1.jpeg"
-              alt="userImage"
-              className={styles.image}
-              width={50}
-              height={50}
-            />
-            <div className={styles.userInfo}>
-              <span className={styles.userName}>Sourabh Sikarwar</span>
-              <span className={styles.date}>01.01.2023</span>
-            </div>
-          </div>
-          <p className={styles.desc}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas nemo
-            alias impedit. Nobis soluta tempora voluptates ab porro
-            exercitationem placeat dicta voluptas eius odio.
-          </p>
-        </div>
+        {isLoading
+          ? "Loading..."
+          : data?.map((comment) => (
+              <div className={styles.comment} key={comment._id}>
+                <div className={styles.user}>
+                  {comment?.user?.image && (
+                    <Image
+                      src={comment.user.image}
+                      alt="userImage"
+                      className={styles.image}
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                  <div className={styles.userInfo}>
+                    <span className={styles.userName}>{comment.user.name}</span>
+                    <span className={styles.date}>
+                      {comment.createdAt.substring(0, 10)}
+                    </span>
+                  </div>
+                </div>
+                <p className={styles.desc}>{comment.desc}</p>
+              </div>
+            ))}
       </div>
     </div>
   );
