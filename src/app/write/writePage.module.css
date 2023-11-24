@@ -43,6 +43,7 @@
     border: none;
     outline: none;
     background-color: transparent;
+    color: var(--textColor);
 }
 .input::placeholder {
     color: #b3b3b1;
@@ -57,4 +58,8 @@
     color: #ffffff;
     cursor: pointer;
     border-radius: 20px;
+}
+.publish:disabled {
+    background-color: #b3b3b1;
+    cursor: not-allowed;
 }
